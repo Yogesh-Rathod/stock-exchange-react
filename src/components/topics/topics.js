@@ -2,7 +2,7 @@ import React from 'react';
 import Table from 'react-bootstrap/lib/Table';
 import { Link } from 'react-router-dom';
 
-const TopicsTable = props => {
+const TopicsTable = ({ topics }) => {
     return (
         <div>
             <h1>Top Stocks To Watch</h1>
@@ -20,12 +20,12 @@ const TopicsTable = props => {
                         <th>Volume</th>
                         <th>Market Percent</th>
                         <th>Seq</th>
-                        <th>View</th>
+                        <th>View Details</th>
                     </tr>
                 </thead>
                 <tbody>
-                    {props.topics && props.topics.length
-                        ? props.topics.map((item, index) => {
+                    {topics && topics.length
+                        ? topics.map((item, index) => {
                               item = JSON.parse(item);
                               return (
                                   <tr key={index}>

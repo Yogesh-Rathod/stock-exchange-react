@@ -76,3 +76,13 @@ code {
     font-size: 16px;
     font-weight: 100;
 }
+
+.crypto {
+    td {
+        span {
+            font-size: 13px;
+            font-style: italic;
+            color: green;
+        }
+    }
+}

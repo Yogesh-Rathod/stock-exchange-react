@@ -1,9 +1,10 @@
 import React from 'react';
 import { connect } from 'react-redux';
 
-import { TopicsTable } from '../../topics/topics';
+import { TopicsTable } from '../../components/topics/topics';
 import { subscribeToTopics } from '../../sockets/topics-socket';
 import { addStock } from '../../actions';
+import Crypto from '../crypto/crypto';
 
 class Home extends React.Component {
     constructor(props) {
@@ -35,6 +36,7 @@ class Home extends React.Component {
         return (
             <div className="container top-buffer">
                 <TopicsTable topics={this.state.information} />
+                <Crypto />
             </div>
         );
     }
