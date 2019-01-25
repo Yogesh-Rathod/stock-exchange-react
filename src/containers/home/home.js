@@ -1,9 +1,9 @@
 import React from 'react';
 import { connect } from 'react-redux';
 
-import { TopicsTable } from './topics/topics';
-import { subscribeToTopics } from './topics-socket';
-import { addStock } from '../actions';
+import { TopicsTable } from '../../topics/topics';
+import { subscribeToTopics } from '../../sockets/topics-socket';
+import { addStock } from '../../actions';
 
 class Home extends React.Component {
     constructor(props) {

@@ -1,7 +1,7 @@
 import React from 'react';
 import { HashRouter as Router, Route } from 'react-router-dom';
 
-import Home from '../home/home';
+import Home from '../containers/home/home';
 import StockDetails from '../details/details';
 
 const AppRouter = () => (
