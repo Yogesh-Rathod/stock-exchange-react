@@ -4,6 +4,7 @@ import axios from 'axios';
 
 import { API_URL } from '../../environment/environment';
 import { CryptoTable } from '../../components/crypto/crypto';
+import { addCrypto } from '../../actions';
 
 class Crypto extends React.Component {
     constructor(props) {
@@ -12,11 +13,16 @@ class Crypto extends React.Component {
     }
 
     componentDidMount() {
-        axios.get(`${API_URL.STOCKS}/stock/market/crypto`).then(data => {
-            let cryptoData = data.data;
-            cryptoData.length = 5;
-            this.setState({ crypto: cryptoData });
-        });
+        if (!this.props.state.Crypto.length) {
+            axios.get(`${API_URL.STOCKS}/stock/market/crypto`).then(data => {
+                let cryptoData = data.data;
+                cryptoData.length = 5;
+                this.setState({ crypto: cryptoData });
+                this.props.addCrypto(cryptoData);
+            });
+        } else {
+            this.setState({ crypto: this.props.state.Crypto[0].crypto });
+        }
     }
 
     render() {
@@ -34,8 +40,11 @@ const mapStateToProps = state => {
     };
 };
 
-// const mapDispatchToProps = dispatch => ({
-//     addStock: stocks => dispatch(addStock(stocks))
-// });
+const mapDispatchToProps = dispatch => ({
+    addCrypto: crypto => dispatch(addCrypto(crypto))
+});
 
-export default connect(mapStateToProps)(Crypto);
+export default connect(
+    mapStateToProps,
+    mapDispatchToProps
+)(Crypto);
