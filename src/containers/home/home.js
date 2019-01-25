@@ -13,18 +13,18 @@ class Home extends React.Component {
         this.state = {
             information: []
         };
-        // subscribeToTopics(information => {
-        //     let topics = [...this.state.information];
-        //     topics.push(information);
-        //     this.setState(
-        //         {
-        //             information: topics
-        //         },
-        //         () => {
-        //             this.props.addStock(this.state.information);
-        //         }
-        //     );
-        // });
+        subscribeToTopics(information => {
+            let topics = [...this.state.information];
+            topics.push(information);
+            this.setState(
+                {
+                    information: topics
+                },
+                () => {
+                    this.props.addStock(this.state.information);
+                }
+            );
+        });
     }
 
     componentDidMount() {
@@ -36,7 +36,7 @@ class Home extends React.Component {
     render() {
         return (
             <div className="container top-buffer">
-                {/* <TopicsTable topics={this.state.information} /> */}
+                <TopicsTable topics={this.state.information} />
                 <Crypto />
                 <UpcomingIPO />
             </div>

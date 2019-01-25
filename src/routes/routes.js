@@ -4,6 +4,12 @@ import { HashRouter as Router, Route } from 'react-router-dom';
 import Home from '../containers/home/home';
 import StockDetails from '../components/details/details';
 
+import { createBrowserHistory } from 'history';
+
+createBrowserHistory().listen(() => {
+    window.scrollTo(0, 0);
+});
+
 const AppRouter = () => (
     <Router>
         <div>

@@ -99,7 +99,16 @@ class StockDetails extends React.Component {
 
     render() {
         return (
-            <div className="container">
+            <div className="container top-buffer">
+                <div className="img-container text-center">
+                    {this.state.stockName ? (
+                        <img
+                            src={`https://storage.googleapis.com/iex/api/logos/${
+                                this.state.stockName
+                            }.png`}
+                        />
+                    ) : null}
+                </div>
                 <h1>
                     Details: {this.state.stockName} |{' '}
                     <span className="desc">
