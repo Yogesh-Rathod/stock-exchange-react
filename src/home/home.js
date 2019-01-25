@@ -22,15 +22,14 @@ class Home extends React.Component {
                     information: topics
                 },
                 () => {
-                    // console.log(
-                    //     'this.state.information ',
-                    //     this.state.information
-                    // );
                     this.props.addStock(this.state.information);
-                    console.log('this.props ', this.props);
+                    console.log('this.props ', this.props.state);
                 }
             );
         });
+        if (this.props.state.Stocks && this.props.state.Stocks[0]) {
+            this.setState({ information: this.props.state.Stocks[0].stock });
+        }
     }
 
     render() {
