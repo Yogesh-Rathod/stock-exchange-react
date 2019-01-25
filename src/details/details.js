@@ -42,7 +42,7 @@ class StockDetails extends React.Component {
             .get(
                 `${
                     API_URL.STOCKS
-                }/stock/${stockName}/batch?types=quote,news&range=1m&last=1`
+                }/stock/${stockName}/batch?types=quote,news,company&range=1m&last=1`
             )
             .then(data => {
                 this.setState({
@@ -104,7 +104,14 @@ class StockDetails extends React.Component {
     render() {
         return (
             <div className="container">
-                <h1>Details: {this.state.stockName}</h1>
+                <h1>
+                    Details: {this.state.stockName} |{' '}
+                    <span className="desc">
+                        {this.state.stockInfo
+                            ? this.state.stockInfo.company.description
+                            : null}
+                    </span>
+                </h1>
                 <BasicInfo
                     info={
                         this.state.stockInfo && this.state.stockInfo.quote

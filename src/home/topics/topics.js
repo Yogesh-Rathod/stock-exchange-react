@@ -5,7 +5,7 @@ import { Link } from 'react-router-dom';
 const TopicsTable = props => {
     return (
         <div>
-            <h1>Stocks Table</h1>
+            <h1>Top Stocks To Watch</h1>
             <Table striped bordered condensed hover>
                 <thead>
                     <tr>

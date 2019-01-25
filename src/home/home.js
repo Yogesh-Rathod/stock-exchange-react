@@ -11,9 +11,6 @@ class Home extends React.Component {
         this.state = {
             information: []
         };
-    }
-
-    componentDidMount() {
         subscribeToTimer(information => {
             let topics = [...this.state.information];
             topics.push(information);
@@ -23,10 +20,12 @@ class Home extends React.Component {
                 },
                 () => {
                     this.props.addStock(this.state.information);
-                    console.log('this.props ', this.props.state);
                 }
             );
         });
+    }
+
+    componentDidMount() {
         if (this.props.state.Stocks && this.props.state.Stocks[0]) {
             this.setState({ information: this.props.state.Stocks[0].stock });
         }
