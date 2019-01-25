@@ -27,9 +27,7 @@ class StockDetails extends React.Component {
             .then(data => {
                 this.initChart(data.data);
             })
-            .catch(error => {
-                console.log('error ', error);
-            });
+            .catch(error => {});
     }
 
     getStockInfo() {
@@ -50,9 +48,7 @@ class StockDetails extends React.Component {
                     stockInfo: data.data
                 });
             })
-            .catch(error => {
-                console.log('error ', error);
-            });
+            .catch(error => {});
     }
 
     initChart(data) {

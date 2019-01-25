@@ -2,7 +2,7 @@ import React from 'react';
 import { connect } from 'react-redux';
 
 import { TopicsTable } from './topics/topics';
-import { subscribeToTimer } from './socket';
+import { subscribeToTopics } from './topics-socket';
 import { addStock } from '../actions';
 
 class Home extends React.Component {
@@ -11,7 +11,7 @@ class Home extends React.Component {
         this.state = {
             information: []
         };
-        subscribeToTimer(information => {
+        subscribeToTopics(information => {
             let topics = [...this.state.information];
             topics.push(information);
             this.setState(

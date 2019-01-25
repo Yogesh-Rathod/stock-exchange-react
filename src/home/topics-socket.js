@@ -4,7 +4,7 @@ import { API_URL } from '../environment/environment';
 
 const socket = openSocket(`${API_URL.STOCKS}/tops`);
 
-function subscribeToTimer(cb) {
+function subscribeToTopics(cb) {
     // Listen to the channel's messages
     socket.on('message', message => {
         cb(message);
@@ -20,4 +20,4 @@ function subscribeToTimer(cb) {
     socket.on('disconnect', () => console.log('Disconnected.'));
 }
 
-export { subscribeToTimer };
+export { subscribeToTopics };
