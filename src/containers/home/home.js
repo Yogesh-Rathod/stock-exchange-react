@@ -41,6 +41,40 @@ class Home extends React.Component {
                 <Crypto />
                 <hr />
                 <UpcomingIPO />
+                <div className="top-buffer">
+                    <h2 className="underline">
+                        For Best View Please{' '}
+                        <span>disable CORS in Browser</span>
+                    </h2>
+                    <ul>
+                        <li>
+                            <h6>Disable Same Origin Policy in Chrome Linux</h6>
+                            <p>- Run following command in Terminal</p>
+                            <span>
+                                google-chrome --user-data-dir="C:/Chrome dev
+                                session" --disable-web-security
+                            </span>
+                        </li>
+                        <li>
+                            <h6>
+                                Disable Same Origin Policy in Chrome Windows
+                            </h6>
+                            <p>- Enter Windows + R and paste following</p>
+                            <span>
+                                chrome.exe --user-data-dir="C://Chrome dev
+                                session" --disable-web-security
+                            </span>
+                        </li>
+                        <li>
+                            <h6>Disable Same Origin Policy in Chrome OS X</h6>
+                            <p>- Run following command in Terminal</p>
+                            <span>
+                                open -a Google\ Chrome --args
+                                --disable-web-security --user-data-dir
+                            </span>
+                        </li>
+                    </ul>
+                </div>
             </div>
         );
     }
