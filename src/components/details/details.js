@@ -11,6 +11,7 @@ import am4themes_animated from '@amcharts/amcharts4/themes/animated';
 import { News } from './news/news';
 import { BasicInfo } from './info/info';
 import Financial from './financial/financial';
+import ExportExcel from '../export-excel/export-excel';
 am4core.useTheme(am4themes_animated);
 
 class StockDetails extends React.Component {
@@ -111,6 +112,55 @@ class StockDetails extends React.Component {
     }
 
     render() {
+        let labelValue = [];
+        if (this.state.financials && this.state.financials.financials) {
+            labelValue.push(
+                {
+                    label: 'Report Date',
+                    value: 'reportDate'
+                },
+                {
+                    label: 'Gross Profit',
+                    value: 'grossProfit'
+                },
+                {
+                    label: 'Cost Of Revenue',
+                    value: 'costOfRevenue'
+                },
+                {
+                    label: 'Operating Revenue',
+                    value: 'operatingRevenue'
+                },
+                {
+                    label: 'Total Revenue',
+                    value: 'totalRevenue'
+                },
+                {
+                    label: 'Net Income',
+                    value: 'netIncome'
+                },
+                {
+                    label: 'Current Assets',
+                    value: 'currentAssets'
+                },
+                {
+                    label: 'Total Assets',
+                    value: 'totalAssets'
+                },
+                {
+                    label: 'Current Cash',
+                    value: 'currentCash'
+                },
+                {
+                    label: 'Total Cash',
+                    value: 'totalCash'
+                },
+                {
+                    label: 'Share Holder Equity',
+                    value: 'shareholderEquity'
+                }
+            );
+        }
         return (
             <div className="container top-buffer">
                 <div className="img-container text-center">
@@ -239,6 +289,14 @@ class StockDetails extends React.Component {
                         </div>
                     </Tab>
                     <Tab eventKey={2} title="Financial">
+                        {this.state.financials &&
+                        this.state.financials.financials ? (
+                            <ExportExcel
+                                data={this.state.financials.financials}
+                                labelValue={labelValue}
+                            />
+                        ) : null}
+
                         <Financial financials={this.state.financials} />
                     </Tab>
                 </Tabs>
