@@ -14,7 +14,7 @@ class Crypto extends React.Component {
 
     componentDidMount() {
         if (!this.props.state.Crypto.length) {
-            axios.get(`${API_URL.STOCKS}/stock/market/crypto`).then(data => {
+            axios.get(`${API_URL.NOCORS}/stock/market/crypto`).then(data => {
                 let cryptoData = data.data;
                 cryptoData.length = 5;
                 this.setState({ crypto: cryptoData });

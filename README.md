@@ -66,12 +66,3 @@ This section has moved here: https://facebook.github.io/create-react-app/docs/de
 ### `npm run build` fails to minify
 
 This section has moved here: https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify
-
-### Disable Same Origin Policy in Chrome Linux
-
-google-chrome --user-data-dir="C:/Chrome dev session" --disable-web-security
-
-### Disable Same Origin Policy in Chrome Windows
-
-Enter Windows + R
-chrome.exe --user-data-dir="C://Chrome dev session" --disable-web-security

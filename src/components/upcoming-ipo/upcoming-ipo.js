@@ -13,7 +13,7 @@ class UpcomingIPO extends React.Component {
     }
 
     getUpcomingIPO() {
-        axios.get(`${API_URL.STOCKS}/stock/market/upcoming-ipos`).then(data => {
+        axios.get(`${API_URL.NOCORS}/stock/market/upcoming-ipos`).then(data => {
             this.setState({ ipo: data.data.viewData });
         });
     }

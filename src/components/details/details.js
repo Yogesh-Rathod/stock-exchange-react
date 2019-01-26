@@ -27,7 +27,7 @@ class StockDetails extends React.Component {
     getChartInfo(stockName, duration) {
         this.setState({ chartDuration: duration });
         axios
-            .get(`${API_URL.STOCKS}/stock/${stockName}/chart/${duration}`)
+            .get(`${API_URL.NOCORS}/stock/${stockName}/chart/${duration}`)
             .then(data => {
                 this.initChart(data.data);
             })
@@ -36,7 +36,7 @@ class StockDetails extends React.Component {
 
     getFinancialInfo(stockName) {
         axios
-            .get(`${API_URL.STOCKS}/stock/${stockName}/financials`)
+            .get(`${API_URL.NOCORS}/stock/${stockName}/financials`)
             .then(data => {
                 this.setState({ financials: data.data });
             })
@@ -53,7 +53,7 @@ class StockDetails extends React.Component {
         axios
             .get(
                 `${
-                    API_URL.STOCKS
+                    API_URL.NOCORS
                 }/stock/${stockName}/batch?types=quote,news,company&range=1m&last=1`
             )
             .then(data => {
