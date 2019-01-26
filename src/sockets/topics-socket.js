@@ -12,8 +12,8 @@ function subscribeToTopics(cb) {
 
     // Connect to the channel
     socket.on('connect', () => {
-        socket.emit('subscribe', 'aks,aapl,amd,azn,snap,fb,aig+');
-        socket.emit('unsubscribe', 'appl,snap,fb,aig+');
+        socket.emit('subscribe', 'GOOGL,MSFT,AAPL,AMZN,FB,AMD,WMT,AIG+');
+        socket.emit('unsubscribe', 'GOOGL,MSFT,AAPL,AMZN,FB,AMD,WMT,AIG+');
     });
 
     // Disconnect from the channel

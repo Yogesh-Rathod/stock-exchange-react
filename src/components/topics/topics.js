@@ -16,7 +16,8 @@ const TopicsTable = ({ topics }) => {
                         <th>Bid Size</th>
                         <th>Ask Price</th>
                         <th>Ask Size</th>
-                        <th>Last Sale Time</th>
+                        <th>Last Sale Price (Time)</th>
+                        <th>Last Sale Size (Time)</th>
                         <th>Volume</th>
                         <th>Market Percent</th>
                         <th>Seq</th>
@@ -37,12 +38,29 @@ const TopicsTable = ({ topics }) => {
                                       <td>{item.askPrice}</td>
                                       <td>{item.askSize}</td>
                                       <td>
-                                          {new Date(
-                                              item.lastSaleTime
-                                          ).toLocaleString()}
+                                          {item.lastSalePrice}
+                                          <br />
+                                          <span>
+                                              (
+                                              {new Date(
+                                                  item.lastSaleTime
+                                              ).toLocaleString()}
+                                              )
+                                          </span>
+                                      </td>
+                                      <td>
+                                          {item.lastSaleSize}
+                                          <br />
+                                          <span>
+                                              (
+                                              {new Date(
+                                                  item.lastSaleTime
+                                              ).toLocaleString()}
+                                              )
+                                          </span>
                                       </td>
                                       <td>{item.volume}</td>
-                                      <td>{item.marketPercent}</td>
+                                      <td>{item.marketPercent}%</td>
                                       <td>{item.seq}</td>
                                       <td className="text-center pointer">
                                           <Link to={`/details/${item.symbol}`}>
