@@ -195,7 +195,7 @@ class StockDetails extends React.Component {
                 </h3>
                 <Tabs
                     className="top-buffer"
-                    defaultActiveKey={2}
+                    defaultActiveKey={1}
                     id="uncontrolled-tab-example"
                 >
                     <Tab eventKey={1} title="Chart">

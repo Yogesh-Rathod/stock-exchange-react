@@ -17,7 +17,7 @@ function subscribeToTopics(cb) {
     });
 
     // Disconnect from the channel
-    socket.on('disconnect', () => console.log('Disconnected.'));
+    socket.on('disconnect', () => console.error('Disconnected.'));
 }
 
 export { subscribeToTopics };

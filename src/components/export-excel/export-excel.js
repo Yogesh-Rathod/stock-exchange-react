@@ -7,7 +7,7 @@ const ExcelColumn = ReactExport.ExcelFile.ExcelColumn;
 
 const ExportExcel = ({ data, labelValue }) => {
     return (
-        <div className="top-buffer">
+        <div className="top-buffer export">
             {data && data.length ? (
                 <ExcelFile
                     element={
