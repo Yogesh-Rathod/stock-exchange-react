@@ -21,6 +21,19 @@
             integrity="sha384-UHRtZLI+pbxtHCWp1t77Bi1L4ZtiqrqD80Kn4Z8NTSRyMA2Fd33n5dQ8lWUE00s/"
             crossorigin="anonymous"
         />
+        <script src="https://www.gstatic.com/firebasejs/5.8.1/firebase.js"></script>
+        <script>
+            // Initialize Firebase
+            var config = {
+                apiKey: 'AIzaSyApR8bDSeF5v72J3KyrErl9Dil-paWN4Xw',
+                authDomain: 'stock-exchange-6cbbe.firebaseapp.com',
+                databaseURL: 'https://stock-exchange-6cbbe.firebaseio.com',
+                projectId: 'stock-exchange-6cbbe',
+                storageBucket: 'stock-exchange-6cbbe.appspot.com',
+                messagingSenderId: '620556347518'
+            };
+            firebase.initializeApp(config);
+        </script>
 
         <!--
       manifest.json provides metadata used when your web app is added to the
