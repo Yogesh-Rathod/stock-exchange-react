@@ -2,10 +2,69 @@ import React from 'react';
 import Table from 'react-bootstrap/lib/Table';
 import { Link } from 'react-router-dom';
 
+import ExportExcel from '../export-excel/export-excel';
+
 const TopicsTable = ({ topics }) => {
+    let labelValue = [],
+        parsedTopics = [];
+    if (topics && topics.length) {
+        topics.forEach(element => {
+            parsedTopics.push(JSON.parse(element));
+        });
+        labelValue.push(
+            {
+                label: 'Symbol',
+                value: 'symbol'
+            },
+            {
+                label: 'Sector',
+                value: 'sector'
+            },
+            {
+                label: 'Bid Price',
+                value: 'bidPrice'
+            },
+            {
+                label: 'Bid Size',
+                value: 'bidSize'
+            },
+            {
+                label: 'Ask Price',
+                value: 'askPrice'
+            },
+            {
+                label: 'Ask Size',
+                value: 'askSize'
+            },
+            {
+                label: 'Last Sale Price',
+                value: 'lastSalePrice'
+            },
+            {
+                label: 'Last Sale Size',
+                value: 'lastSaleSize'
+            },
+            {
+                label: 'Volume',
+                value: 'volume'
+            },
+            {
+                label: 'Market Percent',
+                value: 'marketPercent'
+            },
+            {
+                label: 'Seq',
+                value: 'seq'
+            }
+        );
+    }
+
     return (
-        <div>
+        <div className="upcomingIPO">
             <h2>Top Stocks To Watch</h2>
+            {topics && topics.length ? (
+                <ExportExcel data={parsedTopics} labelValue={labelValue} />
+            ) : null}
             <Table striped bordered condensed hover>
                 <thead>
                     <tr>
