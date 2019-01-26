@@ -123,3 +123,18 @@ hr {
         font-size: 16px;
     }
 }
+
+#uncontrolled-tab-example {
+    ul {
+        border-color: #00c846;
+        li {
+            margin-right: 10px;
+            a {
+                font-weight: 700;
+                border-width: 2px;
+                border-color: #00c846;
+                border-bottom-color: transparent;
+            }
+        }
+    }
+}

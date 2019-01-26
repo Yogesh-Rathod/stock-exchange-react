@@ -1,6 +1,8 @@
 import React from 'react';
 import axios from 'axios';
 import { API_URL } from '../../environment/environment';
+import Tabs from 'react-bootstrap/lib/Tabs';
+import Tab from 'react-bootstrap/lib/Tab';
 
 import * as am4core from '@amcharts/amcharts4/core';
 import * as am4charts from '@amcharts/amcharts4/charts';
@@ -8,6 +10,7 @@ import am4themes_animated from '@amcharts/amcharts4/themes/animated';
 
 import { News } from './news/news';
 import { BasicInfo } from './info/info';
+import Financial from './financial/financial';
 am4core.useTheme(am4themes_animated);
 
 class StockDetails extends React.Component {
@@ -30,12 +33,22 @@ class StockDetails extends React.Component {
             .catch(error => {});
     }
 
+    getFinancialInfo(stockName) {
+        axios
+            .get(`${API_URL.STOCKS}/stock/${stockName}/financials`)
+            .then(data => {
+                this.setState({ financials: data.data });
+            })
+            .catch(error => {});
+    }
+
     getStockInfo() {
         let stockName =
             this.props.match && this.props.match.params
                 ? this.props.match.params.stock
                 : null;
         this.getChartInfo(stockName, '');
+        this.getFinancialInfo(stockName);
         axios
             .get(
                 `${
@@ -130,92 +143,106 @@ class StockDetails extends React.Component {
                 <h3 className="underline">
                     <span>{this.state.stockName} Performance</span>
                 </h3>
-                <div className="row duration-selector">
-                    <div className="col-xs-2">
-                        <ul>
-                            <li
-                                className={
-                                    !this.state.chartDuration
-                                        ? 'active underline pointer'
-                                        : 'pointer'
-                                }
-                                onClick={() => {
-                                    this.getChartInfo(this.state.stockName, '');
-                                }}
-                            >
-                                <span>Last 12 Months</span>
-                            </li>
-                            <li
-                                className={
-                                    this.state.chartDuration === '6m'
-                                        ? 'active underline pointer'
-                                        : 'pointer'
-                                }
-                                onClick={() => {
-                                    this.getChartInfo(
-                                        this.state.stockName,
-                                        '6m'
-                                    );
-                                }}
-                            >
-                                <span>Last 6 Months</span>
-                            </li>
-                            <li
-                                className={
-                                    this.state.chartDuration === '2y'
-                                        ? 'active underline pointer'
-                                        : 'pointer'
-                                }
-                                onClick={() => {
-                                    this.getChartInfo(
-                                        this.state.stockName,
-                                        '2y'
-                                    );
-                                }}
-                            >
-                                <span>Last 2 Years</span>
-                            </li>
-                            <li
-                                className={
-                                    this.state.chartDuration === '5y'
-                                        ? 'active underline pointer'
-                                        : 'pointer'
-                                }
-                                onClick={() => {
-                                    this.getChartInfo(
-                                        this.state.stockName,
-                                        '5y'
-                                    );
-                                }}
-                            >
-                                <span>Last 5 Years</span>
-                            </li>
-                        </ul>
-                    </div>
-                    <div className="col-xs-10">
-                        <div
-                            id="chartDiv"
-                            style={{ width: '100%', height: '400px' }}
-                        />
-                    </div>
-                </div>
+                <Tabs
+                    className="top-buffer"
+                    defaultActiveKey={2}
+                    id="uncontrolled-tab-example"
+                >
+                    <Tab eventKey={1} title="Chart">
+                        <div className="row duration-selector">
+                            <div className="col-xs-2">
+                                <ul>
+                                    <li
+                                        className={
+                                            !this.state.chartDuration
+                                                ? 'active underline pointer'
+                                                : 'pointer'
+                                        }
+                                        onClick={() => {
+                                            this.getChartInfo(
+                                                this.state.stockName,
+                                                ''
+                                            );
+                                        }}
+                                    >
+                                        <span>Last 12 Months</span>
+                                    </li>
+                                    <li
+                                        className={
+                                            this.state.chartDuration === '6m'
+                                                ? 'active underline pointer'
+                                                : 'pointer'
+                                        }
+                                        onClick={() => {
+                                            this.getChartInfo(
+                                                this.state.stockName,
+                                                '6m'
+                                            );
+                                        }}
+                                    >
+                                        <span>Last 6 Months</span>
+                                    </li>
+                                    <li
+                                        className={
+                                            this.state.chartDuration === '2y'
+                                                ? 'active underline pointer'
+                                                : 'pointer'
+                                        }
+                                        onClick={() => {
+                                            this.getChartInfo(
+                                                this.state.stockName,
+                                                '2y'
+                                            );
+                                        }}
+                                    >
+                                        <span>Last 2 Years</span>
+                                    </li>
+                                    <li
+                                        className={
+                                            this.state.chartDuration === '5y'
+                                                ? 'active underline pointer'
+                                                : 'pointer'
+                                        }
+                                        onClick={() => {
+                                            this.getChartInfo(
+                                                this.state.stockName,
+                                                '5y'
+                                            );
+                                        }}
+                                    >
+                                        <span>Last 5 Years</span>
+                                    </li>
+                                </ul>
+                            </div>
+                            <div className="col-xs-10">
+                                <div
+                                    id="chartDiv"
+                                    style={{ width: '100%', height: '400px' }}
+                                />
+                            </div>
+                        </div>
+                        <div className="bars top-buffer">
+                            <ul>
+                                <li>
+                                    <span className="square high" />
+                                    <span>High</span>
+                                </li>
+                                <li>
+                                    <span className="square open" />
+                                    <span>Open</span>
+                                </li>
+                                <li>
+                                    <span className="square low" />
+                                    <span>Low</span>
+                                </li>
+                            </ul>
+                        </div>
+                    </Tab>
+                    <Tab eventKey={2} title="Financial">
+                        <Financial financials={this.state.financials} />
+                    </Tab>
+                </Tabs>
 
-                <div className="bars top-buffer">
-                    <ul>
-                        <li>
-                            <span className="square high" />
-                            <span>High</span>
-                        </li>
-                        <li>
-                            <span className="square open" />
-                            <span>Open</span>
-                        </li>
-                        <li>
-                            <span className="square low" />
-                            <span>Low</span>
-                        </li>
-                    </ul>
-                </div>
                 <hr />
                 <News
                     news={
