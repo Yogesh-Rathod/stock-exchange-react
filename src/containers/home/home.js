@@ -37,7 +37,9 @@ class Home extends React.Component {
         return (
             <div className="container top-buffer">
                 <TopicsTable topics={this.state.information} />
+                <hr />
                 <Crypto />
+                <hr />
                 <UpcomingIPO />
             </div>
         );

@@ -4,7 +4,7 @@ import Table from 'react-bootstrap/lib/Table';
 const CryptoTable = ({ crypto }) => {
     return (
         <div className="crypto">
-            <h1>Top Crypto To Watch</h1>
+            <h2>Top Crypto To Watch</h2>
             <Table striped bordered condensed hover>
                 <thead>
                     <tr>

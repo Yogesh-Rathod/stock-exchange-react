@@ -106,17 +106,19 @@ class StockDetails extends React.Component {
                             src={`https://storage.googleapis.com/iex/api/logos/${
                                 this.state.stockName
                             }.png`}
+                            alt="Stock Logo"
                         />
                     ) : null}
                 </div>
                 <h1>
-                    Details: {this.state.stockName} |{' '}
+                    {this.state.stockName} |{' '}
                     <span className="desc">
                         {this.state.stockInfo
                             ? this.state.stockInfo.company.description
                             : null}
                     </span>
                 </h1>
+                <hr />
                 <BasicInfo
                     info={
                         this.state.stockInfo && this.state.stockInfo.quote
@@ -124,8 +126,9 @@ class StockDetails extends React.Component {
                             : null
                     }
                 />
+                <hr />
                 <h3 className="underline">
-                    <span>{this.state.stockName} Last 1 Month Performance</span>
+                    <span>{this.state.stockName} Performance</span>
                 </h3>
                 <div className="row duration-selector">
                     <div className="col-xs-2">
@@ -213,7 +216,7 @@ class StockDetails extends React.Component {
                         </li>
                     </ul>
                 </div>
-
+                <hr />
                 <News
                     news={
                         this.state.stockInfo && this.state.stockInfo.news

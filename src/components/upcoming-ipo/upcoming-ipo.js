@@ -19,7 +19,7 @@ class UpcomingIPO extends React.Component {
     render() {
         return (
             <div>
-                <h1>Upcoming IPO</h1>
+                <h2>Upcoming IPO</h2>
                 <Table striped bordered condensed hover>
                     <thead>
                         <tr>

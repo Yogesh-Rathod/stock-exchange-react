@@ -82,7 +82,44 @@ code {
         span {
             font-size: 13px;
             font-style: italic;
-            color: green;
+            color: #00c846;
         }
+    }
+}
+
+header,
+footer {
+    background: #002d2c;
+
+    .logo {
+        font-style: italic;
+        color: #fff;
+
+        span {
+            color: #00c846;
+        }
+    }
+}
+
+footer {
+    .copyright {
+        display: inline-block;
+        margin-top: 19px;
+        font-size: 13px;
+        float: right;
+    }
+}
+
+hr {
+    border-color: #00c846;
+}
+
+.api-help {
+    color: #00c846;
+    a {
+        color: #00c846;
+        font-style: italic;
+        margin-left: 7px;
+        font-size: 16px;
     }
 }
