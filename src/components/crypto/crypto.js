@@ -12,13 +12,13 @@ const CryptoTable = ({ crypto }) => {
                         <th>Symbol</th>
                         <th>Company Name</th>
                         <th>Calculation Price</th>
-                        <th>Open</th>
-                        <th>Close</th>
+                        <th>Open Price (Time)</th>
+                        <th>Close Price (Time)</th>
                         <th>High</th>
                         <th>Low</th>
-                        <th>Latest Price</th>
+                        <th>Latest Price (Time)</th>
                         <th>Latest Source</th>
-                        <th>Change</th>
+                        <th>Change value (Percentage)</th>
                     </tr>
                 </thead>
                 <tbody>
@@ -34,29 +34,34 @@ const CryptoTable = ({ crypto }) => {
                                           {item.open}
                                           <br />
                                           <span>
+                                              (
                                               {new Date(
                                                   item.openTime
                                               ).toLocaleString()}
+                                              )
                                           </span>
                                       </td>
                                       <td>
                                           {item.close} <br />
                                           <span>
+                                              (
                                               {new Date(
                                                   item.closeTime
                                               ).toLocaleString()}
+                                              )
                                           </span>
                                       </td>
                                       <td>{item.high}</td>
                                       <td>{item.low}</td>
                                       <td>
                                           {item.latestPrice}
-                                          <br /> <span>{item.latestTime}</span>
+                                          <br />{' '}
+                                          <span>({item.latestTime})</span>
                                       </td>
                                       <td>{item.latestSource}</td>
                                       <td>
                                           {item.change} OR{' '}
-                                          <span>{item.changePercent}%</span>
+                                          <span>({item.changePercent}%)</span>
                                       </td>
                                   </tr>
                               );
